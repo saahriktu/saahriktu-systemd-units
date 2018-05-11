@@ -1,0 +1,10 @@
+[Unit]
+Description=Fix Ryzen randomize_va_space bug
+After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '/bin/echo 0 > /proc/sys/kernel/randomize_va_space'
+
+[Install]
+WantedBy=multi-user.target
